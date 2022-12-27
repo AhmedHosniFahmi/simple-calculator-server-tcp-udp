@@ -37,8 +37,7 @@ public class TCPThread extends Thread{
                     char op = in.readChar();
                     float num2 = in.readFloat();
                     
-                    String operator = Character.toString(op);
-                    String result = num1+" "+operator+" "+num2+" = "+ calc.calculate(num1,num2,op);
+                    String result = num1+" "+Character.toString(op)+" "+num2+" = "+ calc.calculate(num1,num2,op);
                     out.writeUTF(result);
                 } else if(message.equals("!q")) {
                     System.out.println("Connection has been terminated");
