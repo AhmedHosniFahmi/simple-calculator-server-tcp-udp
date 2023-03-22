@@ -26,7 +26,10 @@ public class Client {
 				int flag = 1;
 				while(flag == 1) {
 					System.out.print("Enter a message: ");
-					String message = scanner.nextLine();
+					String message = "";
+					while (message.equals("")) {
+						message = scanner.nextLine();
+					}
 					
 					if (message.equals("!e")) {
 						out.writeUTF(message);
@@ -87,7 +90,10 @@ public class Client {
 				
 				while(flag == 1) {
 					System.out.print("Enter a message: ");
-					String message = scanner.nextLine();
+					String message = "";
+					while (message.equals("")) {
+						message = scanner.nextLine();
+					}
 					
 					if (message.equals("!e")) {
 						dpSender.setData(message.getBytes());
