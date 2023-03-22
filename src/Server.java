@@ -46,17 +46,15 @@ public class Server {
 
 				HashMap<Integer, List<String>> port_data = new HashMap<>();
 				Calculator calc = new Calculator();
-				boolean eq = false;
 
 				while (true) {
 					ds.receive(dpReciver);
 					int port = dpReciver.getPort();
 					String message = new String(dpReciver.getData(),0,dpReciver.getLength()); System.out.println(message);
-					if (message.equals("!e")) eq = true;
-					else if (eq) {
-						if (!port_data.containsKey(port)) {
-							port_data.put(port, new ArrayList<>());
-						}
+					if (message.equals("!e")) { 
+						port_data.put(port, new ArrayList<>());
+					}
+					else if (port_data.containsKey(port)) {
 						port_data.get(port).add(message);
 						
 						List<String> list = port_data.get(port);
@@ -74,7 +72,6 @@ public class Server {
 								System.out.println(e);
 							}
 							port_data.remove(port);
-							eq = false;
 						}
 					} else {
 						try {
